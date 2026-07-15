@@ -1,0 +1,13 @@
+class Solution:
+    def numRescueBoats(self, people: List[int], limit: int) -> int:
+        people.sort()
+        boats = 0
+        left = 0
+        right = len(people)-1
+        while left <= right:
+            remaining = limit - people[right] 
+            boats += 1
+            right -= 1
+            if left <= right and people[left] <= remaining:
+                left += 1
+        return boats
